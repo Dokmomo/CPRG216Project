@@ -1,0 +1,183 @@
+#################
+#################
+#################
+#################
+################# Marcus Eastgaard
+
+
+
+
+class Doctor:
+    def __init__(self, ID, Name, Specialization, Working_Time, Qualifcation, Room_Number):
+        self.ID = ID
+        self.Name = Name
+        self.Specialization = Specialization
+        self.Working_Time = Working_Time
+        self.Qualifcation = Qualifcation
+        self.Room_Number = Room_Number
+    def getID(self):
+        return self.ID
+    def getName(self):
+        return self.Name
+    def getSpecialization(self):
+        return self.Specialization
+    def getWorking_Time(self):
+        return self.Working_Time
+    def getQualifcation(self):
+        return self.Qualifcation
+
+    def formatDrInfo(self):
+        return f"{self.ID}_{self.Name}_{self.Specialization}_{self.Working_Time}_{self.Qualifcation}_{self.Room_Number}"
+
+    def enterDrInfo(self):
+        self.ID = input("Enter Doctor ID: ")
+        self.Name = input("Enter Doctor Name: ")
+        self.Specialization = input("Enter Doctor Specialization: ")
+        self.Working_Time = input("Enter Doctor Working Time: ")
+        self.Qualification = input("Enter Doctor Qualification: ")
+        self.Room_Number = input("Enter Doctor Room Number: ")
+    
+    def displayDoctorInfo(self):
+        print(f"Doctor ID: {self.ID}")
+        print(f"Doctor Name: {self.Name}")
+        print(f"Doctor Specialization: {self.Specialization}")
+        print(f"Doctor Working Time: {self.Working_Time}")
+        print(f"Doctor Qualification: {self.Qualification}")
+        print(f"Doctor Room Number: {self.Room_Number}")
+    
+    doctors_list = []
+
+
+
+class Facility:
+
+   def __init__(self,FacilityName):
+        self.FacilityName = FacilityName
+
+
+
+
+
+class Laboratory:
+
+    def __init__(self, Name, Cost):
+        self.Name = Name
+        self.Cost = Cost
+
+    def formatLabInfo(self):
+        return f"{self.Name}_{self.Cost}"
+
+    def enterLaboratoryInfo(self):
+        self.Name = input("Enter Laboratory Name: ")
+        self.Cost = input("Enter Laboratory Cost: ")
+
+
+
+
+class Patient:
+
+    def __init__(self, pid, Name, Disease, Gender, Age):
+        self.pid = pid
+        self.Name = Name
+        self.Disease = Disease
+        self.Gender = Gender
+        self.Age = Age
+
+    def formatPatientInfo(self):
+        return f"{self.pid}_{self.Name}_{self.Disease}_{self.Gender}_{self.Age}"
+    
+    def enterPatientInfo(self):
+        self.pid = input("Enter Patient ID: ")
+        self.Name = input("Enter Patient Name: ")
+        self.Disease = input("Enter Patient Disease: ")
+        self.Gender = input("Enter Patient Gender: ")
+        self.Age = input("Enter Patient Age: ")
+    
+    def displayPatientInfo(self):
+        print(f"Patient ID: {self.pid}")
+        print(f"Patient Name: {self.Name}")
+        print(f"Patient Disease: {self.Disease}")
+        print(f"Patient Gender: {self.Gender}")
+        print(f"Patient Age: {self.Age}")
+
+
+
+class Management:
+    def Management(self):
+        self.repeat = True
+        while self.repeat:
+            self.option = input('Welcome to Alberta Hospital (AH) Managment system\nSelect from the following options, or select 0 to stop:\n1 - 	Doctors\n2 - 	Facilities\n3 - 	Laboratories\n4 - 	Patients\n\n')
+            
+            if int(self.option) == 1:
+                self.cycle = True
+                self.obj_handle = Doctor()
+                while self.cycle:
+                    self.option = input('\nDoctors Menu:\n1 - Display Doctors list\n2 - Search for doctor by ID\n3 - Search for doctor by name\n4 - Add doctor\n5 - Edit doctor info\n6 - Back to the Main Menu\n\n')
+                    if int(self.option) == 1:
+                        self.obj_handle.displayDoctorsList()
+                        print("\nBack to the prevoius Menu") 
+                    elif int(self.option) == 2:
+                        self.obj_handle.searchDoctorById()
+                        print("\nBack to the prevoius Menu") 
+                    elif int(self.option) == 3:
+                        self.obj_handle.searchDoctorByName()
+                        print("\nBack to the prevoius Menu")
+                    elif int(self.option) == 4:
+                        self.obj_handle.addDrToFile()
+                        print("\nBack to the prevoius Menu")
+                    elif int(self.option) == 5:
+                        self.obj_handle.editDoctorInfo()
+                        print("\nBack to the prevoius Menu")
+                    elif int(self.option) == 6:
+                        self.cycle = False
+                        print("")
+
+            elif int(self.option) == 2:
+                self.cycle = True
+                self.obj_handle = Facility()
+                while self.cycle:
+                    self.option = input('Facilities Menu:\n1 - Display Facilities list\n2 - Add Facility\n3 - Back to the Main Menu\n\n')
+                    if int(self.option) == 1:
+                        self.obj_handle.displayFacilities()
+                        print("Back to the prevoius Menu") 
+                    elif int(self.option) == 2:
+                        self.obj_handle.addFacility()
+                        print("\nBack to the prevoius Menu") 
+                    elif int(self.option) == 3:
+                        self.cycle = False
+                        print("") 
+            elif int(self.option) == 3:
+                self.cycle = True
+                self.obj_handle = Laboratory()
+                while self.cycle:
+                    self.option = input('Laboratories Menu:\n1 - Display laboratories list\n2 - Add laboratory\n3 - Back to the Main Menu\n\n')
+                    if int(self.option) == 1:
+                        self.obj_handle.displayLabsList()
+                    elif int(self.option) == 2:
+                        self.obj_handle.addLabToFile()
+                    elif int(self.option) == 3:
+                        self.cycle = False
+                    print("Back to the prevoius Menu\n") 
+            
+            elif int(self.option) == 4:
+                self.cycle = True
+                self.obj_handle = Patient()
+                while self.cycle:
+                    self.option = input('Patients Menu:\n1 - Display patients list\n2 - Search for patient by ID\n3 - Add patient\n4 - Edit patient info\n5 - Back to the Main Menu\n\n')
+                    if int(self.option) == 1:
+                        self.obj_handle.ddisplayPatientsList()
+                    elif int(self.option) == 2:
+                        self.obj_handle.searchPatientById()
+                    elif int(self.option) == 3:
+                        self.obj_handle.addPatientToFile()
+                    elif int(self.option) == 4:
+                        self.obj_handle.editPatientInfo()
+                    elif int(self.option) == 5:
+                        self.cycle = False
+                    print("Back to the prevoius Menu\n")
+            else:
+                self.repeat = False 
+run_obj = Management()
+run_obj.Management()
+
+
